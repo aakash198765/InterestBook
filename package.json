@@ -1,6 +1,6 @@
 {
-  "name": "lenden",
-  "version": "0.1.0",
+  "name": "InterestBook",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "@rjsf/core": "^5.13.2",
