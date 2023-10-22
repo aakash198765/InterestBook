@@ -1,0 +1,8 @@
+{
+    "Interest": {
+      "ui:widget": "hidden"
+    },
+    "TotalAmount": {
+      "ui:widget": "hidden"
+    }
+  }

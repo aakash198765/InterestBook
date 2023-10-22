@@ -1,0 +1,22 @@
+.ant-statistic-title {
+    font-weight: 400 !important;
+    font-size: 16px !important; 
+    line-height: 24px !important;
+    color: #4f5357 !important;
+    margin-bottom: 12px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.ant-statistic-content-value-int {
+    flex: 1;
+    display: block;
+    font-family: Supreme-Regular;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 48px;
+    color: #101828;
+    text-align: center;
+}

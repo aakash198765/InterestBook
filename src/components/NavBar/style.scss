@@ -1,0 +1,57 @@
+.navbar {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 0rem 5% 0rem 5%;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.app-name {
+    font-size: 24px; /* Adjust the font size */
+    font-weight: bold;
+    transition: font-size 0.8s;
+
+    &:hover {
+        color: #191616;
+        font-size: 28px;
+        //border-bottom: 1px solid #191616;
+        text-decoration: dashed;
+    }
+}
+
+
+  
+.app-logo img {
+    width: 50px; /* Adjust the width of the logo */
+    height: 50px; /* Adjust the height of the logo */
+    margin-right: 1rem; /* Spacing between logo and app name */
+    padding-top: 1rem;
+  }
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.login-register {
+    background-color: #06a4b5;
+    color: #fff;
+    padding: 13px 22px;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 500;
+    max-width: max-content;
+  }
+  
+  .login-register button:hover {
+    background-color: #0056b3; /* Button background color on hover */
+  }

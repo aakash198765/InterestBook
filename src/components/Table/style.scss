@@ -1,0 +1,161 @@
+// Changed
+.antd-table-container {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .header {
+    text-align: center;
+  }
+  
+  // Changed
+  .table-responsive {
+    height: 80vh;
+  }
+  
+  .sticky {
+    overflow: scroll;
+  
+    .header,
+    .footer {
+      position: sticky;
+      z-index: 1;
+      width: fit-content;
+    }
+  }
+  
+  .tableindex {
+    z-index: 100 !important;
+  }
+  
+  .max-height-table {
+    max-height: calc(100vh - 100px) !important;
+  }
+  
+  th {
+    text-align: center !important;
+  }
+  
+  // Changed
+  .ant-table {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .ant-table-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    font-family: serif;
+  }
+  
+  // Changed
+  .ant-table-cell {
+    height: 3rem;
+    padding: 0%;
+    margin: 0%;
+    border: 0.1rem dashed #f0f0f0 !important;
+  }
+  
+  // Changed
+  .ant-table-thead>tr>th {
+    background: #F9FAFC !important;
+    border-color: #DEDEDE;
+    padding: 0.408em 1em 0.408em 0.408em !important;
+  }
+  
+  // Changed
+  .ant-table-tbody>tr>td {
+    border-right: 0.0416em solid #f0f0f0 !important;
+    font-size: 1.1rem;
+    line-height: 1em;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 400;
+    font-style: normal;
+    padding: 0.5em 1em;
+  }
+  
+  html.rui-night-mode .ant-table-cell-row-hover {
+    background: #323942 !important;
+  }
+  
+  html.rui-night-mode .ant-table-tbody>tr>td,
+  html.rui-night-mode .ant-table-thead>tr>th {
+    border-bottom: 1px solid rgba(235, 235, 235, 0.1) !important;
+  }
+  
+  html.rui-night-mode .ant-table.ant-table-bordered>.ant-table-container>.ant-table-header>table>thead>tr:not(:last-child)>th {
+    border-bottom: 1px solid rgba(235, 235, 235, 0.1) !important;
+  }
+  
+  html.rui-night-mode .ant-table.ant-table-bordered>.ant-table-container>.ant-table-header>table {
+    border-top: 1px solid rgba(235, 235, 235, 0.1) !important;
+  }
+  
+  html.rui-night-mode .ant-table.ant-table-bordered>.ant-table-container {
+    border-left: 1px solid rgba(235, 235, 235, 0.1) !important;
+  }
+  
+  html.rui-night-mode .ant-table.ant-table-bordered>.ant-table-container>.ant-table-header>table>thead>tr>th {
+    border-right: 1px solid rgba(235, 235, 235, 0.1) !important;
+  }
+  
+  html.rui-night-mode .ant-table.ant-table-bordered>.ant-table-container>.ant-table-body>table>tbody>tr>td {
+    border-right: 1px solid rgba(235, 235, 235, 0.1) !important;
+  }
+  
+  html.rui-night-mode .ant-table.ant-table-bordered>.ant-table-container>.ant-table-body>table>tbody>tr>td,
+  html.rui-night-mode .ant-table-thead>tr>th {
+    background-color: #2a2f38 !important;
+    color: #ffffff !important;
+  }
+  
+  html.rui-night-mode .ant-table,
+  html.rui-night-mode .ant-table-sticky-holder {
+    background: none !important;
+  }
+  
+  html.rui-night-mode .ant-table-body {
+    &::-webkit-scrollbar {
+      width: 5px !important;
+      height: 0.1px !important;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: rgba(235, 235, 235, 0.1) !important;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: rgba(235, 235, 235, 0.1) !important;
+    }
+  
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555 !important;
+    }
+  }
+  
+  .ant-table-body {
+    // min-height: 60vh !important;
+    // max-height: 60vh !important;
+    overflow-y: auto !important;
+  
+    &::-webkit-scrollbar {
+      width: 5px !important;
+      height: 5px !important;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: transparent !important;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      // background: #e6ecf0 !important;
+      background: #555 !important;
+    }
+  
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555 !important;
+    }
+  }

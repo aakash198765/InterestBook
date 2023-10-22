@@ -1,0 +1,31 @@
+
+.dashboard {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-title {
+  font-size: 4.5rem;
+  line-height: 5.5rem;
+  margin: 2rem 0rem 1rem 0rem ; 
+  font-weight: 500;
+  color: #44475b;
+}
+
+.dashboard-subtitle {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: gray;
+  margin-bottom: 1rem;
+}
+
+.dashboardImage {
+  // margin-top: -5rem;
+}
+
+.w-7 {
+  min-width: 7rem !important;
+}
