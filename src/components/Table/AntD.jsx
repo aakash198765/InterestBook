@@ -14,12 +14,12 @@ export default class Table extends React.Component {
 
 
   render() {
-    const { columns, data} = this.props;
+    const { title, columns, data} = this.props;
 
     return (
       <div className='antd-table-container'>
         <AntDTable
-            title={() => "Interest Breakdown"}
+            title={() => title}
             columns={columns}
             dataSource={data}
             virtual

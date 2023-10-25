@@ -1,6 +1,7 @@
 import "./style.scss";
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { withTranslation } from 'react-i18next';
 
 
 // Internal Components
@@ -17,11 +18,14 @@ class Dashboard extends Component {
     // Initialize your component's state if needed
     this.state = {
       // Your state variables go here
+
     };
+    this.t = this.props.t;
   }
 
   componentDidMount() {
     // Code to run after the component has mounted
+    
   }
 
   componentDidUpdate() {
@@ -52,14 +56,14 @@ class Dashboard extends Component {
         <div className="dashboard">
             <div className="dashboard-title">
                 <span>
-                    Empowering financial dreams,
+                    {this.t("Empowering financial dreams,")}
                     <br />
-                    one platform.
+                    {this.t("one platform.")}
                 </span>
             </div>
-            <span className="dashboard-subtitle">Secure Lend, Smart Borrow.</span>
+            <span className="dashboard-subtitle">{this.t("Secure Lend, Smart Borrow.")}</span>
             <div className="login-register w-7">
-                 <span className="login-header-text" onClick={()=>this.navigateTo("computation")}>Get started</span>
+                 <span className="login-header-text" onClick={()=>this.navigateTo("computation")}>{this.t("Get started")}</span>
             </div>
             <div className="dashboardImage">
                     <img src={dashboardImage} alt="Dashboard Image" />
@@ -78,7 +82,7 @@ class Dashboard extends Component {
   }
 }
 
-export default withRouter(Dashboard);
+export default withTranslation()(withRouter(Dashboard));
 
 
 

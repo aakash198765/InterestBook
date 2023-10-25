@@ -1,5 +1,6 @@
 import "./style.scss";
 import React from 'react';
+
 import { Col, Row, Statistic as AntDStatistic } from 'antd';
 
 class Statistic extends React.Component {

@@ -1,6 +1,7 @@
 import "./style.scss";
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { withTranslation } from "react-i18next";
 
 import appLogo from "../../assests/images/appLogo.png";
 import dashboardImage from "../../assests/animations/dashboardImage.gif";
@@ -13,6 +14,7 @@ class NavBar extends Component {
     this.state = {
       // Your state variables go here
     };
+    this.t = this.props.t;
   }
 
   componentDidMount() {
@@ -53,12 +55,12 @@ class NavBar extends Component {
                   <img src={appLogo} alt="Company Logo" />
                 </div>
                 <div className="app-name">
-                  InterestBook
+                  {this.t("Lahana Bahee")}
                 </div>
             </div>
             <div className="navbar-right">
                 <div className="login-register">
-                    <span className="login-header-text" onClick={()=>{}}>Login/Register</span>
+                    <span className="login-header-text" onClick={()=>{}}>{this.t("Login/Register")}</span>
                 </div>
             </div>
        </div>
@@ -74,7 +76,7 @@ class NavBar extends Component {
   }
 }
 
-export default withRouter(NavBar);
+export default withTranslation()(withRouter(NavBar));
 
 
 

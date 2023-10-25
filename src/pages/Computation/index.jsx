@@ -1,5 +1,6 @@
 import "./style.scss";
 import React, { Component } from 'react';
+import { withTranslation } from 'react-i18next';
 
 import appLogo from "../../assests/images/appLogo.png";
 import dashboardImage from "../../assests/animations/dashboardImage.gif";
@@ -16,10 +17,10 @@ import Statistic from "../../components/Card/Statistic";
 import Table from "../../components/Table/AntD";
 
 // data import
-import jsonSchema from "./schema/jsonSchema.json";
-import uiSchema  from "./schema/uiSchema.json";
-import columns from "./schema/columns.json";
-import statistics from "./schema/statistics.json";
+import jsonSchema from "./schema/jsonSchema";
+import uiSchema  from "./schema/uiSchema";
+import columns from "./schema/columns";
+import statistics from "./schema/statistics";
 
 import Utils from "../../libs/Utils";
 import Parser from "./parser";
@@ -39,6 +40,7 @@ class Computation extends Component {
        
       }
     };
+    this.t = this.props.t;
   }
 
   componentDidMount() {
@@ -83,28 +85,6 @@ class Computation extends Component {
     this.setState({formData})
   }
 
-  // Define you render components
-  renderHeader = () => {
-
-    return(
-       <div className="dashboard-header">
-            <div className="dashboard-header-left">
-                <div className="logo">
-                    <img src={appLogo} alt="Company Logo" />
-                </div>
-                <div className="app-name">
-                    Lenden
-                </div>
-            </div>
-            <div className="dashboard-header-right">
-                <div className="login-register">
-                    <span className="login-header-text" onClick={()=>this.props.navigation.push("/compound-interest-calculator")}>Login/Register</span>
-                </div>
-            </div>
-       </div>
-    )
-  }
-
   renderContent = () => {
 
     const { formData} = this.state;
@@ -115,17 +95,17 @@ class Computation extends Component {
             {/* Page Title */}
             <div className="page-title">
                 <span>
-                    Take Control of Your Finances
+                    {this.t("Take Control of Your Finances")}
                     {/* <br />
                     one platform. */}
                 </span>
             </div>
               {/* Page Subtitle */}
             <span className="page-subtitle">
-                Our Compound Interest Calculator puts you in charge.
-                See how your money grows over time with this easy-to-use tool. 
+                {this.t("Our Compound Interest Calculator puts you in charge.")}
+                {this.t("See how your money grows over time with this easy-to-use tool.")} 
                 <br />
-                Enter your data below and get started today.
+                {this.t("Enter your data below and get started today.")}
             </span>
             {/* Page Content */}
             <div className="page-content">
@@ -134,13 +114,14 @@ class Computation extends Component {
                     {/* Left Content */}
                     <Col xs={24} sm={24} md={7} lg={7} className="computation-content-left" >
                         <Form
-                            schema={jsonSchema}
-                            uiSchema={uiSchema}
+                            schema={jsonSchema(this.t)}
+                            uiSchema={uiSchema(this.t)}
                             formData={this.state.formData}
                             validator={validator}
                             onChange={this.onChange}
                             onSubmit={this.onSubmit}
                             onError={console.log('errors')}
+                            
                         />
                     </Col>
                     
@@ -148,7 +129,7 @@ class Computation extends Component {
                     <Col xs={24} sm={24} md={17} lg={17} className="computation-content-right">
                         <div className="chart-container">
                             <Statistic
-                                data={Parser.formatStatisticData(statistics, formData)}
+                                data={Parser.formatStatisticData(statistics(this.t), formData)}
                             />
                             <SimpleBarChart 
                                 data={data} 
@@ -162,7 +143,8 @@ class Computation extends Component {
                  {/* Page Content Bottom  */}
                 <Row className="computation-row-2">
                     <Table
-                        columns={columns} 
+                        title={this.t("Interest Breakdown")}
+                        columns={columns(this.t)} 
                         data={data}
                     />
                 </Row>
@@ -183,7 +165,7 @@ class Computation extends Component {
   }
 }
 
-export default Computation;
+export default withTranslation()(Computation);
 
 
 
