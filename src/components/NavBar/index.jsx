@@ -4,7 +4,11 @@ import { withRouter } from 'react-router-dom';
 import { withTranslation } from "react-i18next";
 
 import appLogo from "../../assests/images/appLogo.png";
-import dashboardImage from "../../assests/animations/dashboardImage.gif";
+
+import Dropdown from "../Dropdown";
+import resources from "../../i18n/resources";
+import Utils from "../../libs/Utils";
+
 
 class NavBar extends Component {
   constructor(props) {
@@ -45,6 +49,13 @@ class NavBar extends Component {
     this.props.history.push(url)
   }
 
+  changeLanguage = (language) => {
+    let lng = language.key;
+    let { i18n } = this.props;
+    i18n.changeLanguage(lng);
+    Utils.setToLocalStorage("lng", lng);
+  }
+
   // Define you render components
   renderNavbar = () => {
 
@@ -61,6 +72,9 @@ class NavBar extends Component {
             <div className="navbar-right">
                 <div className="login-register">
                     <span className="login-header-text" onClick={()=>{}}>{this.t("Login/Register")}</span>
+                </div>
+                <div className="language-selector">
+                    <Dropdown data={resources("languages")} selected={Utils.getFromLocalStorage("lng")} callback={this.changeLanguage} />
                 </div>
             </div>
        </div>

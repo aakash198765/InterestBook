@@ -1,4 +1,20 @@
+var localStorage = require('localStorage')
+
 class Utils {
+
+    static setToLocalStorage = (key, value) => {
+        if(!key) {
+            return;
+        }
+        localStorage.setItem(key, value)
+    }
+
+    static getFromLocalStorage = (key, value) => {
+        if(!key) {
+            return;
+        }
+        return  localStorage.getItem(key)
+    }
 
     static getTimestamp = (date) => {
         if(!date) {

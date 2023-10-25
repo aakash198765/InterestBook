@@ -1,19 +1,12 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-
-const resources = {
-    en: {
-        translations: require("./locales/en/translation.json")
-    },
-    hi: {
-        translations: require("./locales/hi/translation.json")
-    }
-}
+import resources from './resources';
+import Utils from '../libs/Utils';
 
 i18n.use(initReactI18next).init({
-  fallbackLng: 'hi',
-  lng: 'hi',
-  resources,
+  fallbackLng: 'en',
+  lng:  Utils.getFromLocalStorage("lng") || 'en',
+  resources: resources("resources"),
   ns: ['translations'],
   defaultNS: 'translations'
 });
