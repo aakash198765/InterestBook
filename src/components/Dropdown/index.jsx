@@ -41,7 +41,7 @@ class  Dropdown extends React.Component {
 
     render() {
 
-        const { data, selected, callback } = this.props;
+        let { data, selected, callback } = this.props;
 
         let selectedOption = data && data.find(item => item.key === selected);
         if(!selectedOption || !Object.keys(selectedOption).length) {
