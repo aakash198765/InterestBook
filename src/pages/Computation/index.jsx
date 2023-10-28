@@ -116,7 +116,7 @@ class Computation extends Component {
                         <Form
                             schema={jsonSchema(this.t)}
                             uiSchema={uiSchema(this.t)}
-                            formData={this.state.formData}
+                            formData={formData}
                             validator={validator}
                             onChange={this.onChange}
                             onSubmit={this.onSubmit}
@@ -134,8 +134,9 @@ class Computation extends Component {
                             <SimpleBarChart 
                                 data={data} 
                                 xAxisDataKey="Year" 
+                                yAxisDataKey="TotalAmount"
                                 BarDataKey1="Interest" 
-                                BarDataKey2="TotalAmount"
+                                BarDataKey2="PrincipalAmount"
                             />
                         </div>
                     </Col>

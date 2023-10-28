@@ -1,4 +1,5 @@
-var localStorage = require('localStorage')
+var localStorage = require('localStorage');
+
 
 class Utils {
 
@@ -113,7 +114,22 @@ class Utils {
         }
        return symbol;
     }
-    
+
+    static translate = (value, t) => {
+        if(!t || typeof t !== "function") {
+            return value;
+        }
+        if(value === null || value === undefined) {
+            return "--";
+        }
+        if(typeof value !== "string") {
+            value = value.toString();
+        }
+        value =  value.split("").map((digit) => {
+            return t(digit)
+        })
+        return value.join('');
+    }
 
 }
 

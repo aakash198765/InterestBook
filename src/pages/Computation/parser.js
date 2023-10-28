@@ -12,7 +12,7 @@ class Parser {
             if(Object.keys(formData).includes(statistic.key)) {
                 value = formData[statistic.key];
             }
-            statistic["value"] =  Utils.getCurrency(formData["Currency"]) +  value;
+            statistic["value"] = value;
             statistics[i] = statistic;
         }
         return statistics;
