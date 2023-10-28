@@ -18,7 +18,7 @@ const resources = (type) => {
         },
         {
             key: "hi",
-            label: "Hindi (hi)"
+            label: "हिन्दी (hi)"
         }
     ]
 

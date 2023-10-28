@@ -1,41 +1,41 @@
-const statistics = (t) => {
+const statistics = () => {
     
     return ([ 
         {
             "index": 1,
-            "title": t("Principal Amount"),
+            "title": "Principal Amount",
             "dataIndex": "PrincipalAmount",
             "key": "PrincipalAmount",
             "align": "right",
             "width": 150,
-            "type": "number"
+            "dataType": "number"
         },
         {   
             "index": 2,
-            "title": t("Interest"),
+            "title": "Interest",
             "dataIndex": "Interest",
             "key": "Interest",
             "align": "right",
             "width": 150,
-            "type": "number"
+            "dataType": "number"
         },
         {
             "index": 3,
-            "title": t("Total Amount"),
+            "title": "Total Amount",
             "dataIndex": "TotalAmount",
             "key": "TotalAmount",
             "align": "right",
             "width": 150,
-            "type": "number"
+            "dataType": "number"
         },
         {
             "index": -1,
-            "title": t("Currency"),
+            "title": "Currency",
             "dataIndex": "Currency",
             "key": "Currency",
             "align": "right",
             "width": 150,
-            "type": "string"
+            "dataType": "string"
         }
     ])
 }

@@ -35,7 +35,7 @@ class Statistic extends React.Component {
                 continue;
             }
             let obj = data[i];
-            let title = obj.title || "";
+            let title = this.t(obj.title) || "";
             let value = Utils.translate(obj.value, this.t)
             value =  Utils.getCurrency(currency) +  value;
             componentData.push(

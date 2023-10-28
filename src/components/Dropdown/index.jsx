@@ -1,6 +1,7 @@
 import "./style.scss";
 import React from 'react';
 import { Button, Dropdown as AntDropdown } from 'antd';
+import { withTranslation } from "react-i18next";
 
 class  Dropdown extends React.Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class  Dropdown extends React.Component {
         this.state = {
 
         }
+        this.t = this.props.t;
     }
 
     renderMenu = (data, selected, callback) => {
@@ -27,7 +29,7 @@ class  Dropdown extends React.Component {
                 key: data[i].key,
                 label: (
                     <a id="dropdown-menu-item" onClick={() => callback(data[i])}>
-                        {data[i].label}
+                        {this.t(data[i].label)}
                     </a>
                 )
             })
@@ -62,4 +64,4 @@ class  Dropdown extends React.Component {
         )
     }
 };
-export default Dropdown;
+export default  withTranslation()(Dropdown);

@@ -120,15 +120,24 @@ class Utils {
             return value;
         }
         if(value === null || value === undefined) {
-            return "--";
+            return "";
         }
-        if(typeof value !== "string") {
-            value = value.toString();
+        let type = typeof value;
+        switch(type) {
+            case "number":
+            case "integer":
+            case "float":
+                value = value.toString()
+                value = value.split("").map((digit) => {
+                    return t(digit)
+                })
+                value = value.join('')
+                break;
+            default:
+                value = t(value);
+                break;
         }
-        value =  value.split("").map((digit) => {
-            return t(digit)
-        })
-        return value.join('');
+        return value;
     }
 
 }

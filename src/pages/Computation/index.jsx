@@ -133,10 +133,11 @@ class Computation extends Component {
                             />
                             <SimpleBarChart 
                                 data={data} 
-                                xAxisDataKey="Year" 
+                                xAxisDataKey="Month-Year" 
                                 yAxisDataKey="TotalAmount"
-                                BarDataKey1="Interest" 
-                                BarDataKey2="PrincipalAmount"
+                                BarDataKey1="PrincipalAmount" 
+                                BarDataKey2="Interest" 
+                                BarDataKey3="TotalAmount"
                             />
                         </div>
                     </Col>
