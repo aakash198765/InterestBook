@@ -3,6 +3,15 @@ const statistics = () => {
     return ([ 
         {
             "index": 1,
+            "title": "Tenure Period",
+            "dataIndex": "TenurePeriod",
+            "key": "TenurePeriod",
+            "align": "right",
+            "width": 150,
+            "dataType": "string"
+        },
+        {
+            "index": 1,
             "title": "Principal Amount",
             "dataIndex": "PrincipalAmount",
             "key": "PrincipalAmount",

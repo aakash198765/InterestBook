@@ -121,7 +121,6 @@ class Computation extends Component {
                             onChange={this.onChange}
                             onSubmit={this.onSubmit}
                             onError={console.log('errors')}
-                            
                         />
                     </Col>
                     

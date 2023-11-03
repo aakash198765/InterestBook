@@ -48,7 +48,7 @@ class Utils {
         const months = Math.floor((timestampDifference % millisecondsInYear) / millisecondsInMonth);
         const days = Math.floor(((timestampDifference % millisecondsInYear) % millisecondsInMonth) / millisecondsInDay);
 
-        return years+" years, "+months+" months, "+days+" days";
+        return years+" Year "+months+" Month "+days+" Day";
     }
 
     static getComputation = (principal, rate, initiationDate, closureDate, frequency) => {
@@ -115,14 +115,16 @@ class Utils {
        return symbol;
     }
 
-    static translate = (value, t) => {
+    static translate = (value, t, type) => {
         if(!t || typeof t !== "function") {
             return value;
         }
         if(value === null || value === undefined) {
             return "";
         }
-        let type = typeof value;
+        if(!type) {
+            type = typeof value;
+        }
         switch(type) {
             case "number":
             case "integer":
@@ -133,6 +135,19 @@ class Utils {
                 })
                 value = value.join('')
                 break;
+            case "string":
+                value = value.split(' ').map((word) => {
+                    if(/^\d+$/.test(word)) {
+                        word = word.split("").map((digit) => {
+                            return t(digit)
+                        })
+                        word = word.join('')
+                        return word;
+                    } else {
+                        return t(word);
+                    }
+                })
+                value = value.join(' ')
             default:
                 value = t(value);
                 break;

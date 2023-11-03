@@ -1,6 +1,9 @@
 const uiSchema = (t) => {
 
   return {
+      "TenurePeriod": {
+        "ui:widget": "hidden"
+      },
       "Interest": {
         "ui:widget": "hidden"
       },

@@ -36,8 +36,11 @@ class Statistic extends React.Component {
             }
             let obj = data[i];
             let title = this.t(obj.title) || "";
-            let value = Utils.translate(obj.value, this.t)
-            value =  Utils.getCurrency(currency) +  value;
+            let value = Utils.translate(obj.value, this.t, obj.dataType);
+            if(obj.dataType === "number") {
+                value =  Utils.getCurrency(currency) +  value;
+            }
+            
             componentData.push(
                 <Col span={24/colCount}>
                     <AntDStatistic title={title} value={value} />
