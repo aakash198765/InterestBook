@@ -19,7 +19,6 @@ import Table from "../../components/Table/AntD";
 // data import
 import jsonSchema from "./schema/jsonSchema";
 import uiSchema  from "./schema/uiSchema";
-import uiFields from "./schema/uiFields";
 import columns from "./schema/columns";
 import statistics from "./schema/statistics";
 
@@ -28,8 +27,6 @@ import Parser from "./parser";
 import Page from "../../components/Page";
 import NavBar from "../../components/NavBar";
 
-
-
 class Computation extends Component {
   constructor(props) {
     super(props);
@@ -37,9 +34,8 @@ class Computation extends Component {
     // Initialize your component's state if needed
     this.state = {
       // Your state variables go here
-      formData: {
-  
-      }
+      formData: {},
+      errorSchema: {},
     };
     this.t = this.props.t;
   }
@@ -70,40 +66,55 @@ class Computation extends Component {
   // Define your custom methods and event handlers here
   onChange = (e) => {
     let { formData, schema, uiSchema, id } = e;
-    // if(!id) {
-    //   return;
-    // }
     let stateFormData  = {};
     if(this.state.formData && Object.keys(this.state.formData).length) {
      stateFormData = JSON.parse(JSON.stringify(this.state.formData));
     }
-    // switch(id) {
-    //   case "PrincipalAmount":
-    //   case "InterestRate":
-    //     let val = formData[id];
-    //     val = Utils.translate(val, this.t, "number", "", true);
-    //     val = val.replace(/[^0-9]/g, '');
-    //     val = Number(val) || 0;
-    //     formData[id] = val;
-    //     break;
-    //   case "Currency":
-    //   case "InterestFrequency":
-    //     formData[id] = Utils.translate(formData[id], this.t, "string", '  ');
-    //     break;
-    // }
-    //stateFormData = Object.assign({}, formData);
     stateFormData["Currency"] = Utils.translate(formData["Currency"], this.t);
     stateFormData["InterestFrequency"] = Utils.translate(formData["InterestFrequency"], this.t);
     stateFormData["PrincipalAmount"] = Number((Utils.translate(formData["PrincipalAmount"], this.t, "number", "", true)).replace(/[^0-9]/g, '')) || 0;
     stateFormData["InterestRate"] = Number((Utils.translate(formData["InterestRate"], this.t, "number", "", true)).replace(/[^0-9]/g, '')) || 0;
-    stateFormData["InitiationDate"] = formData["InitiationDate"];
-    stateFormData["ClosureDate"] = formData["ClosureDate"];
+    let initiationDate = Utils.translate(formData["InitiationDate"], this.t, "date", "-", true);
+    //if(Utils.validateDate(initiationDate)) {
+      stateFormData["InitiationDate"] = initiationDate
+    //}
+    let closureDate = Utils.translate(formData["ClosureDate"], this.t, "date", "-", true);
+    //if(Utils.validateDate(closureDate)) {
+      stateFormData["ClosureDate"] = closureDate;
+    //}
     this.setState({formData: stateFormData})
+  }
+
+  onValidation = (formData) => {
+    let log = {
+      status: true,
+      error: {}
+    }
+    if(!this.state.formData || !Object.keys(this.state.formData).length) {
+      log.status = false;
+      log.error["FormData"] = "Form data is missing";
+      return log;
+    }
+    let initiationDate = Utils.translate(formData["InitiationDate"], this.t, "date", "-", true);
+    if(!Utils.validateDate(initiationDate)) {
+      log.status = false;
+      log.error["InitiationDate"] = Utils.translate("Date is invalid");
+    }
+    let closureDate = Utils.translate(formData["ClosureDate"], this.t, "date", "-", true);
+    if(!Utils.validateDate(closureDate)) {
+      log.status = false;
+      log.error["ClosureDate"] = Utils.translate("Date is invalid");
+    }
+
+    return log;
   }
 
   onSubmit = (e) => {
     if(!this.state.formData || !Object.keys(this.state.formData).length) {
-      return
+      return;
+    }
+    if(!this.onValidation(this.state.formData).status) {
+      return;
     }
    
     let formData = JSON.parse(JSON.stringify(this.state.formData));
@@ -126,8 +137,8 @@ class Computation extends Component {
       let splitBy = "";
       let type = ""
       if(key === "InitiationDate" || key === "ClosureDate") {
-        //splitBy = "-";
-        //type = "words";
+        splitBy = "-";
+        type = "date";
       }
       let val = parsedFormData[key]
       parsedFormData[key] = Utils.translate(val, this.t, type, splitBy);
@@ -137,7 +148,7 @@ class Computation extends Component {
 
   renderContent = () => {
 
-    const { formData} = this.state;
+    const { formData, errorSchema} = this.state;
     const data = formData && formData.InterestBreakdown && Array.isArray(formData.InterestBreakdown) && formData.InterestBreakdown.length  ? [...formData.InterestBreakdown] : [];
 
     return(
@@ -166,7 +177,6 @@ class Computation extends Component {
                         <Form
                             schema={jsonSchema(this.t)}
                             uiSchema={uiSchema(this.t)}
-                            //fields={uiFields}
                             formData={this.parseFormData(formData)}
                             validator={validator}
                             onChange={(e) => this.onChange(e)}

@@ -130,7 +130,7 @@ class Utils {
             case "number":
             case "integer":
             case "float":
-                value = value.split("").map((digit) => {
+                value = value.split(splitBy).map((digit) => {
                     if(revert) {
                         if(/^\d+$/.test(digit)) {
                             return digit;
@@ -140,7 +140,7 @@ class Utils {
                     }
                     return t(digit)
                 })
-                value = value.join('')
+                value = value.join(splitBy)
                 break;
             case "string":
                 value = t(value)
@@ -159,11 +159,34 @@ class Utils {
                 })
                 value = value.join(splitBy)
                 break;
+            case "date":
+                value = value.split(splitBy).map((word) => {
+                    word = word.split("").map((digit) => {
+                        if(revert) {
+                            if(/^\d+$/.test(digit)) {
+                                return digit;
+                            } else {
+                                return t(digit)
+                            }
+                        }
+                        return t(digit)
+                    })
+                    word = word.join('')
+                    return word;
+                })
+                value = value.join(splitBy)
+
             default:
                 value = t(value);
                 break;
         }
         return value;
+    }
+
+    static validateDate = (date) => {
+        //let pattern = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
+        let pattern = /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
+        return pattern.test(date);
     }
 
 }

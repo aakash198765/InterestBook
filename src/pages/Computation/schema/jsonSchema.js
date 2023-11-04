@@ -72,13 +72,13 @@ const jsonSchema = (t) => {
         },
         "InitiationDate": {
           "type": "string",
-          "format": "date",
-          "title": t("Initiation Date")
+          "format": "custom-date",
+          "title": t("Initiation Date (YYYY-MM-DD)")
         },
         "ClosureDate": {
           "type": "string",
-          "format": "date",
-          "title": t("Closure Date")
+          "format": "custom-date",
+          "title": t("Closure Date (YYYY-MM-DD)")
         },
         "TenurePeriod": {
           "type": "string",
