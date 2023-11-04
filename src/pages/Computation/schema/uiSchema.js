@@ -10,13 +10,14 @@ const uiSchema = (t) => {
       "TotalAmount": {
         "ui:widget": "hidden"
       },
-      "submit": {
-        "type": "submit",
-        "ui:options": {
-          "inputType": "submit",
-          "label": t("Submit") 
-        }
-      }
+      "ui:submitButtonOptions": {
+        "props": {
+          "disabled": false,
+          "className": 'btn btn-info',
+        },
+        "norender": false,
+        "submitText": t('Submit'),
+      },
   }
 }
 

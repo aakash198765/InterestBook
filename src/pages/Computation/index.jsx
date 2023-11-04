@@ -19,6 +19,7 @@ import Table from "../../components/Table/AntD";
 // data import
 import jsonSchema from "./schema/jsonSchema";
 import uiSchema  from "./schema/uiSchema";
+import uiFields from "./schema/uiFields";
 import columns from "./schema/columns";
 import statistics from "./schema/statistics";
 
@@ -37,7 +38,7 @@ class Computation extends Component {
     this.state = {
       // Your state variables go here
       formData: {
-       
+  
       }
     };
     this.t = this.props.t;
@@ -53,7 +54,9 @@ class Computation extends Component {
       "InitiationDate": "2023-10-20",
       "ClosureDate": "2028-10-20",
     }
-    this.onSubmit({formData: sampleData})
+    this.setState({formData: sampleData}, () => {
+      this.onSubmit();
+    })
   }
 
   componentDidUpdate() {
@@ -66,15 +69,44 @@ class Computation extends Component {
 
   // Define your custom methods and event handlers here
   onChange = (e) => {
-    console.log("onChange", e)
-
+    let { formData, schema, uiSchema, id } = e;
+    // if(!id) {
+    //   return;
+    // }
+    let stateFormData  = {};
+    if(this.state.formData && Object.keys(this.state.formData).length) {
+     stateFormData = JSON.parse(JSON.stringify(this.state.formData));
+    }
+    // switch(id) {
+    //   case "PrincipalAmount":
+    //   case "InterestRate":
+    //     let val = formData[id];
+    //     val = Utils.translate(val, this.t, "number", "", true);
+    //     val = val.replace(/[^0-9]/g, '');
+    //     val = Number(val) || 0;
+    //     formData[id] = val;
+    //     break;
+    //   case "Currency":
+    //   case "InterestFrequency":
+    //     formData[id] = Utils.translate(formData[id], this.t, "string", '  ');
+    //     break;
+    // }
+    //stateFormData = Object.assign({}, formData);
+    stateFormData["Currency"] = Utils.translate(formData["Currency"], this.t);
+    stateFormData["InterestFrequency"] = Utils.translate(formData["InterestFrequency"], this.t);
+    stateFormData["PrincipalAmount"] = Number((Utils.translate(formData["PrincipalAmount"], this.t, "number", "", true)).replace(/[^0-9]/g, '')) || 0;
+    stateFormData["InterestRate"] = Number((Utils.translate(formData["InterestRate"], this.t, "number", "", true)).replace(/[^0-9]/g, '')) || 0;
+    stateFormData["InitiationDate"] = formData["InitiationDate"];
+    stateFormData["ClosureDate"] = formData["ClosureDate"];
+    this.setState({formData: stateFormData})
   }
 
   onSubmit = (e) => {
-    if(!e || !e.formData || !Object.keys(e.formData).length) {
-        return;
+    if(!this.state.formData || !Object.keys(this.state.formData).length) {
+      return
     }
-    let formData = JSON.parse(JSON.stringify(e.formData));
+   
+    let formData = JSON.parse(JSON.stringify(this.state.formData));
     const tenurePeriod =  Utils.getTenurePeriod(formData.InitiationDate, formData.ClosureDate);
     const { interest, total } =  Utils.getComputation(formData.PrincipalAmount, formData.InterestRate, formData.InitiationDate, formData.ClosureDate, formData.InterestFrequency);
     const interestBreakdown = Utils.getComputationWithBreakdown(formData.PrincipalAmount, formData.InterestRate, formData.InitiationDate, formData.ClosureDate, formData.InterestFrequency);
@@ -83,6 +115,24 @@ class Computation extends Component {
     formData["TotalAmount"] = total;
     formData["InterestBreakdown"] = interestBreakdown;
     this.setState({formData})
+  }
+
+  parseFormData = (formData) => {
+    if(!formData || !Object.keys(formData).length) {
+      return formData;
+    }
+    let parsedFormData = JSON.parse(JSON.stringify(formData));
+    for(const key in parsedFormData) {
+      let splitBy = "";
+      let type = ""
+      if(key === "InitiationDate" || key === "ClosureDate") {
+        //splitBy = "-";
+        //type = "words";
+      }
+      let val = parsedFormData[key]
+      parsedFormData[key] = Utils.translate(val, this.t, type, splitBy);
+    }
+    return parsedFormData;
   }
 
   renderContent = () => {
@@ -116,10 +166,11 @@ class Computation extends Component {
                         <Form
                             schema={jsonSchema(this.t)}
                             uiSchema={uiSchema(this.t)}
-                            formData={formData}
+                            //fields={uiFields}
+                            formData={this.parseFormData(formData)}
                             validator={validator}
-                            onChange={this.onChange}
-                            onSubmit={this.onSubmit}
+                            onChange={(e) => this.onChange(e)}
+                            onSubmit={(e) => this.onSubmit(e)}
                             onError={console.log('errors')}
                         />
                     </Col>

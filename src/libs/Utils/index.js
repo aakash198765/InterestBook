@@ -115,7 +115,7 @@ class Utils {
        return symbol;
     }
 
-    static translate = (value, t, type) => {
+    static translate = (value, t, type, splitBy = "", revert) => {
         if(!t || typeof t !== "function") {
             return value;
         }
@@ -125,18 +125,28 @@ class Utils {
         if(!type) {
             type = typeof value;
         }
+        value = value.toString();
         switch(type) {
             case "number":
             case "integer":
             case "float":
-                value = value.toString()
                 value = value.split("").map((digit) => {
+                    if(revert) {
+                        if(/^\d+$/.test(digit)) {
+                            return digit;
+                        } else {
+                            return t(digit)
+                        }
+                    }
                     return t(digit)
                 })
                 value = value.join('')
                 break;
             case "string":
-                value = value.split(' ').map((word) => {
+                value = t(value)
+                break;
+            case "words": 
+                value = value.split(splitBy).map((word) => {
                     if(/^\d+$/.test(word)) {
                         word = word.split("").map((digit) => {
                             return t(digit)
@@ -147,7 +157,8 @@ class Utils {
                         return t(word);
                     }
                 })
-                value = value.join(' ')
+                value = value.join(splitBy)
+                break;
             default:
                 value = t(value);
                 break;

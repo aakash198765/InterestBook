@@ -35,8 +35,17 @@ class Statistic extends React.Component {
                 continue;
             }
             let obj = data[i];
+            let key = obj.key;
             let title = this.t(obj.title) || "";
-            let value = Utils.translate(obj.value, this.t, obj.dataType);
+            let value = obj.value || "";
+            let type = obj.dataType;
+            let splitBy = ""
+            // TODO: TenurePeriod
+            if(key === "TenurePeriod") {
+                type = "words";
+                splitBy = " ";
+            }
+            value = Utils.translate(value, this.t, type, splitBy);
             if(obj.dataType === "number") {
                 value =  Utils.getCurrency(currency) +  value;
             }

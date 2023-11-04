@@ -8,7 +8,6 @@ const jsonSchema = (t) => {
         "Currency": {
           "type": "string",
           "title": t("Currency"),
-          "default": "INR (₹)",
           "enum": [
             // "USD ($)",
             // "EUR (€)",
@@ -25,8 +24,8 @@ const jsonSchema = (t) => {
             // "HKD ($)",
             // "NOK (kr)",
             // "MXN ($)",
-            "INR (₹)",
-            "NPR (रु)",
+            t("INR (₹)"),
+            t("NPR (रु)"),
             // "BRL (R$)",
             // "ZAR (R)",
             // "RUB (₽)",
@@ -54,23 +53,22 @@ const jsonSchema = (t) => {
           ]
         },
         "PrincipalAmount": {
-          "type": "number",
+          "type": "string",
           "title": t("Principal Amount")
         },
         "InterestRate": {
-          "type": "number",
+          "type": "string",
           "title": t("Interest Rate (%)")
         },
         "InterestFrequency": {
           "type": "string",
           "title": t("Interest Frequency Cycle"),
           "enum": [
-            "Monthly",
-            "Quarterly",
-            "Half-Yearly",
-            "Yearly"
-          ],
-          "default": "Yearly"
+            t("Monthly"),
+            t("Quarterly"),
+            t("Half-Yearly"),
+            t("Yearly")
+          ]
         },
         "InitiationDate": {
           "type": "string",
@@ -84,15 +82,14 @@ const jsonSchema = (t) => {
         },
         "TenurePeriod": {
           "type": "string",
-          "title": t("Tenure Period"),
-          "minLength": 2
+          "title": t("Tenure Period")
         },
         "Interest": {
-          "type": "number",
+          "type": "string",
           "title": t("Interest")
         },
         "TotalAmount": {
-          "type": "number",
+          "type": "string",
           "title": t("Total Amount")
         }
       },
