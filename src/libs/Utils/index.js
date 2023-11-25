@@ -51,26 +51,49 @@ class Utils {
         return years+" Year "+months+" Month "+days+" Day";
     }
 
+    // static getComputation = (principal, rate, initiationDate, closureDate, frequency) => {
+    //    /* 
+    //         1. Date format: dd/mm/yyyy or timestamp in milliseconds
+    //         2. CI Formula: p(1 + (r/n))^(nt)
+    //     */
+    //     initiationDate = this.getTimestamp(initiationDate); // validate date
+    //     closureDate = this.getTimestamp(closureDate); // validate date
+    //     const p = principal; // principal
+    //     const r = rate/100;  // interest rate
+    //     const t = (this.getTimestamp(closureDate) - this.getTimestamp(initiationDate)) / (1000 * 60 * 60 * 24 * 365); // Assuming 365 days in a year; // no. of years
+    //     const n = frequency === "Monthly" ? 12 : frequency === "Quarterly" ? 4 : frequency === "Half-Yearly" ? 2 : frequency === "Yearly" ? 1 : frequency; // number of times interest has to be compounder per year
+        
+    //     const total = p * Math.pow(1 + (r/n), n*t); // principal with ci interest
+    //     const interest = total - p;
+    //     return { 
+    //         principal: Number(principal.toFixed(2)),
+    //         interest: Number(interest.toFixed(2)), 
+    //         total: Number(total.toFixed(2))
+    //     };
+    // }
+
     static getComputation = (principal, rate, initiationDate, closureDate, frequency) => {
-       /* 
-            1. Date format: dd/mm/yyyy or timestamp in milliseconds
-            2. CI Formula: p(1 + (r/n))^(nt)
+        /* 
+             1. Date format: dd/mm/yyyy or timestamp in milliseconds
+             2. CI Formula: p(1 + (r/n))^(nt)
         */
         initiationDate = this.getTimestamp(initiationDate); // validate date
         closureDate = this.getTimestamp(closureDate); // validate date
         const p = principal; // principal
-        const r = rate/100;  // interest rate
+        const r = rate/100; //  interest rate
         const t = (this.getTimestamp(closureDate) - this.getTimestamp(initiationDate)) / (1000 * 60 * 60 * 24 * 365); // Assuming 365 days in a year; // no. of years
-        const n = frequency === "Monthly" ? 12 : frequency === "Quarterly" ? 3 : frequency === "Half-Yearly" ? 6 : frequency === "Yearly" ? 12 : frequency; // number of times interest has to be compounder per year
-        
+        const n = frequency === "Monthly" ? 12 : 1; // number of times interest has to be compounder per year
+
+        // Always calculate annually
         const total = p * Math.pow(1 + (r/n), n*t); // principal with ci interest
+
         const interest = total - p;
         return { 
             principal: Number(principal.toFixed(2)),
             interest: Number(interest.toFixed(2)), 
             total: Number(total.toFixed(2))
         };
-    }
+     }
 
     static getComputationWithBreakdown = (principal, rate, initiationDate, closureDate, frequency) => {
         /* 
@@ -80,10 +103,9 @@ class Utils {
         initiationDate = this.getTimestamp(initiationDate); // validate date
         closureDate = this.getTimestamp(closureDate); // validate date
         const p = principal; // principal
-        const r = rate/100;  // interest rate
+        const r = rate/100; //  interest rate
         const t = (closureDate - initiationDate) / (1000 * 60 * 60 * 24 * 365); // Assuming 365 days in a year; // no. of years
-        const n = frequency === "Monthly" ? 12 : frequency === "Quarterly" ? 3 : frequency === "Half-Yearly" ? 6 : frequency === "Yearly" ? 12 : frequency; // number of times interest has to be compounder per year
-    
+        const n = frequency === "Monthly" ? 12 : 1; // number of times interest has to be compounder per year
         // Initialize an array to store the breakdown
         const breakdown = [];
     

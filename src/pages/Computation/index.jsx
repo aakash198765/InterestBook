@@ -44,11 +44,11 @@ class Computation extends Component {
     // Code to run after the component has mounted
     const sampleData = {
       "Currency": "INR (₹)",
-      "PrincipalAmount": 1000,
-      "InterestRate": 5,
+      "PrincipalAmount": 10000,
+      "InterestRate": 2,
       "InterestFrequency": "Yearly",
       "InitiationDate": "2023-10-20",
-      "ClosureDate": "2028-10-20",
+      "ClosureDate": "2024-10-19",
     }
     this.setState({formData: sampleData}, () => {
       this.onSubmit();

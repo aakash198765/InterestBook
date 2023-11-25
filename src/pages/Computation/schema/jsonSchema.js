@@ -58,15 +58,13 @@ const jsonSchema = (t) => {
         },
         "InterestRate": {
           "type": "string",
-          "title": t("Interest Rate (%)")
+          "title": t("Interest Rate per annum (%)")
         },
         "InterestFrequency": {
           "type": "string",
           "title": t("Interest Frequency Cycle"),
           "enum": [
             t("Monthly"),
-            t("Quarterly"),
-            t("Half-Yearly"),
             t("Yearly")
           ]
         },
