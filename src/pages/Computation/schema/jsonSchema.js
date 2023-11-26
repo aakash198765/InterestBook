@@ -52,13 +52,21 @@ const jsonSchema = (t) => {
             // "VND (₫)"
           ]
         },
+        "InterestType": {
+          "type": "string",
+          "title": t("Interest Type"),
+          "enum": [
+            t("Compound Interest"),
+            t("Sekda Interest")
+          ]
+        },
         "PrincipalAmount": {
           "type": "string",
           "title": t("Principal Amount")
         },
         "InterestRate": {
           "type": "string",
-          "title": t("Interest Rate per annum (%)")
+          "title": t("Interest Rate")
         },
         "InterestFrequency": {
           "type": "string",

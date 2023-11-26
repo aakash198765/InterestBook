@@ -44,6 +44,7 @@ class Computation extends Component {
     // Code to run after the component has mounted
     const sampleData = {
       "Currency": "INR (₹)",
+      "InterestType": "Sekda Interest",
       "PrincipalAmount": 10000,
       "InterestRate": 2,
       "InterestFrequency": "Yearly",
@@ -71,6 +72,7 @@ class Computation extends Component {
      stateFormData = JSON.parse(JSON.stringify(this.state.formData));
     }
     stateFormData["Currency"] = Utils.translate(formData["Currency"], this.t);
+    stateFormData["InterestType"] = Utils.translate(formData["InterestType"], this.t);
     stateFormData["InterestFrequency"] = Utils.translate(formData["InterestFrequency"], this.t);
     stateFormData["PrincipalAmount"] = Number((Utils.translate(formData["PrincipalAmount"], this.t, "number", "", true)).replace(/[^0-9]/g, '')) || 0;
     stateFormData["InterestRate"] = Number((Utils.translate(formData["InterestRate"], this.t, "number", "", true)).replace(/[^0-9]/g, '')) || 0;
@@ -118,9 +120,9 @@ class Computation extends Component {
     }
    
     let formData = JSON.parse(JSON.stringify(this.state.formData));
-    const tenurePeriod =  Utils.getTenurePeriod(formData.InitiationDate, formData.ClosureDate);
-    const { interest, total } =  Utils.getComputation(formData.PrincipalAmount, formData.InterestRate, formData.InitiationDate, formData.ClosureDate, formData.InterestFrequency);
-    const interestBreakdown = Utils.getComputationWithBreakdown(formData.PrincipalAmount, formData.InterestRate, formData.InitiationDate, formData.ClosureDate, formData.InterestFrequency);
+    const tenurePeriod =  Utils.getDuration(formData.InitiationDate, formData.ClosureDate, "period");
+    const { interest, total } =  Utils.getComputation(formData.PrincipalAmount, formData.InterestRate, formData.InitiationDate, formData.ClosureDate, formData.InterestFrequency, formData.InterestType);
+    const interestBreakdown = Utils.getComputationWithBreakdown(formData.PrincipalAmount, formData.InterestRate, formData.InitiationDate, formData.ClosureDate, formData.InterestFrequency, formData.InterestType);
     formData["TenurePeriod"] = tenurePeriod;
     formData["Interest"] = interest;
     formData["TotalAmount"] = total;
