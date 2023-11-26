@@ -1,7 +1,7 @@
-const jsonSchema = (t) => {
+const jsonSchema = (t, interestType) => {
 
   return ({
-      "title": t("Compound Interest Calculator"),
+      "title": t(`${interestType} Calculator`),
       "description": "",
       "type": "object",
       "properties": {
@@ -56,8 +56,9 @@ const jsonSchema = (t) => {
           "type": "string",
           "title": t("Interest Type"),
           "enum": [
-            t("Compound Interest"),
-            t("Sekda Interest")
+            t("SimpleInterest"),
+            t("CompoundInterest"),
+            t("SekdaInterest")
           ]
         },
         "PrincipalAmount": {

@@ -40,11 +40,35 @@ class Computation extends Component {
     this.t = this.props.t;
   }
 
+  getInterestType = (title) => {
+    const url = window.location.href;
+    let interestType = "SimpleInterest";
+    
+    if(url && url.includes("compound-interest")) {
+      interestType =  "CompoundInterest"
+    } else  if(url && url.includes("sekda-interest")) {
+      interestType = "SekdaInterest"
+    } 
+
+    if(title) {
+      switch(interestType) {
+        case "SimpleInterest": return "Simple Interest";
+        case "CompoundInterest": return "Compound Interest";
+        case "SekdaInterest": return "Sekda Interest";
+      }
+    }
+
+    return interestType;
+  }
+
   componentDidMount() {
+
+    const interestType = this.getInterestType();
+
     // Code to run after the component has mounted
     const sampleData = {
       "Currency": "INR (₹)",
-      "InterestType": "Sekda Interest",
+      "InterestType": interestType,
       "PrincipalAmount": 10000,
       "InterestRate": 2,
       "InterestFrequency": "Yearly",
@@ -165,7 +189,7 @@ class Computation extends Component {
             </div>
               {/* Page Subtitle */}
             <span className="page-subtitle">
-                {this.t("Our Compound Interest Calculator puts you in charge.")}
+                {this.t(`Our ${this.getInterestType(true)} Calculator puts you in charge.`)}
                 {this.t("See how your money grows over time with this easy-to-use tool.")} 
                 <br />
                 {this.t("Enter your data below and get started today.")}
@@ -177,7 +201,7 @@ class Computation extends Component {
                     {/* Left Content */}
                     <Col xs={24} sm={24} md={7} lg={7} className="computation-content-left" >
                         <Form
-                            schema={jsonSchema(this.t)}
+                            schema={jsonSchema(this.t, this.getInterestType(true))}
                             uiSchema={uiSchema(this.t)}
                             formData={this.parseFormData(formData)}
                             validator={validator}

@@ -146,7 +146,7 @@ class Utils {
         let total = 0;
         let interest = 0;
         switch(interestType) {
-            case "Sekda Interest": 
+            case "SekdaInterest": 
                 result  = this.getSekdaInterest(principal, rate, initiationDate, closureDate);
                 break;
             default: 
