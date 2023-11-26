@@ -1,6 +1,5 @@
-const uiSchema = (t) => {
-
-  return {
+const uiSchema = (t, interestType) => {
+  let schema = {
       "InterestType": {
         "ui:widget": "hidden"
       },
@@ -25,6 +24,11 @@ const uiSchema = (t) => {
         "submitText": t('Submit'),
       },
   }
+
+  if(interestType && interestType.includes("Compound")){
+      delete schema.InterestFrequency;
+  } 
+  return schema;
 }
 
 export default uiSchema;

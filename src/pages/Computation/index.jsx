@@ -202,7 +202,7 @@ class Computation extends Component {
                     <Col xs={24} sm={24} md={7} lg={7} className="computation-content-left" >
                         <Form
                             schema={jsonSchema(this.t, this.getInterestType(true))}
-                            uiSchema={uiSchema(this.t)}
+                            uiSchema={uiSchema(this.t, this.getInterestType(true))}
                             formData={this.parseFormData(formData)}
                             validator={validator}
                             onChange={(e) => this.onChange(e)}

@@ -73,8 +73,24 @@ class Utils {
         return result;
     }
 
+    static getSimpleInterest(principal, rate, initiationDate, closureDate){
+        // Parse the initial and closure dates
+        const time  = this.getDuration(initiationDate, closureDate, "years");
+
+        let total = 0;
+        let interest = 0;
+
+        interest = (principal*rate*time)/100;
+        total = principal +  interest;
+
+        interest = this.getPrecisedValue(interest);
+        total = this.getPrecisedValue(total);
+        return { principal, interest, total };
+    }
+
     static getCompundInterest(principal, rate, initiationDate, closureDate, frequency){
         // Parse the initial and closure dates
+        rate = rate/100;
         const time  = this.getDuration(initiationDate, closureDate, "years");
         const compoundingFrequency = frequency === "Monthly" ? 12 : frequency === "Quarterly" ? 4 : frequency === "Half-Yearly" ? 2 : frequency === "Yearly" ? 1 : frequency; // number of times interest has to be compounder per year
 
@@ -143,14 +159,15 @@ class Utils {
        
         
         let result = {};
-        let total = 0;
-        let interest = 0;
         switch(interestType) {
+            case "SimpleInterest": 
+                result = this.getSimpleInterest(principal, rate, initiationDate, closureDate)
+                break;
+            case "CompoundInterest": 
+                result  = this.getCompundInterest(principal, rate, initiationDate, closureDate, frequency);
+                break;
             case "SekdaInterest": 
                 result  = this.getSekdaInterest(principal, rate, initiationDate, closureDate);
-                break;
-            default: 
-                result  = this.getCompundInterest(principal, rate, initiationDate, closureDate, frequency);
                 break;
         }
         return { 
@@ -161,6 +178,7 @@ class Utils {
     }
 
     static getComputationWithBreakdown = (principal, rate, initiationDate, closureDate, frequency, type) => {
+        return []
         /* 
             1. Date format: dd/mm/yyyy
             2. CI Formula: p(1 + (r/n))^(nt)

@@ -74,6 +74,8 @@ const jsonSchema = (t, interestType) => {
           "title": t("Interest Frequency Cycle"),
           "enum": [
             t("Monthly"),
+            t("Quarterly"),
+            t("Half-Yearly"),
             t("Yearly")
           ]
         },
