@@ -21,6 +21,8 @@
     "भारतीय रुपया (₹)": "INR (₹)",
     "नेपाली रुपया (रु)": "NPR (रु)",
     "Interest Type": "ब्याज प्रकार",
+    "Simple Interest": "साधारित ब्याज",
+    "साधारित ब्याज": "Simple Interest",
     "Compound Interest": "चक्रवृद्धि ब्याज",
     "चक्रवृद्धि ब्याज": "Compound Interest",
     "Sekda Interest": "सैकड़ा ब्याज",

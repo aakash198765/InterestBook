@@ -1,0 +1,19 @@
+.link-layout-1 {
+
+
+}
+
+.link-title-1 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1794a7;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #1794a7;
+    cursor: pointer;
+    transition: font-size 0.5s, color 0.5s;
+}
+
+.link-title-1:hover {
+    font-size: 1.1rem;
+    color: #137482;
+}

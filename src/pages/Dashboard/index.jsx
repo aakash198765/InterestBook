@@ -4,9 +4,12 @@ import { withRouter } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
 
 
+import InterestTypes from "./schema/interestTypes";
+
 // Internal Components
 import Page from "../../components/Page";
 import NavBar from "../../components/NavBar";
+import Link from "../../components/Link/Link";
 
 import appLogo from "../../assests/images/appLogo.png";
 import dashboardImage from "../../assests/animations/dashboardImage.gif";
@@ -39,13 +42,28 @@ class Dashboard extends Component {
   // Define your custom methods and event handlers here
   navigateTo = (id) => {
     switch(id) {
-      case "computation": 
-      return this.navigate('/computation');
+      case "SimpleInterest": 
+        return this.navigate('/simple-interest');
+      case "CompoundInterest": 
+        return this.navigate('/compound-interest');
+      case "SekdaInterest": 
+        return this.navigate('/sekda-interest');
     }
   }
 
   navigate = (url) => {
     this.props.history.push(url)
+  }
+
+  callback = (type, value) => {
+    switch(type){
+      case "InterestTypes": 
+        this.navigateTo(value.value);
+        return;
+      default:
+        return;
+    }
+
   }
 
   // Define you render components
@@ -62,8 +80,12 @@ class Dashboard extends Component {
                 </span>
             </div>
             <span className="dashboard-subtitle">{this.t("Secure Lend, Smart Borrow.")}</span>
-            <div className="login-register w-7">
-                 <span className="login-header-text" onClick={()=>this.navigateTo("computation")}>{this.t("Get started")}</span>
+            <div className="">
+                {/* <span className="login-header-text" onClick={()=>this.navigateTo("computation")}>{this.t("Get started")}</span> */}
+                <Link 
+                  data={InterestTypes} 
+                  callback={(value)=>this.callback("InterestTypes", value)}
+                />
             </div>
             <div className="dashboardImage">
                     <img src={dashboardImage} alt="Dashboard Image" />

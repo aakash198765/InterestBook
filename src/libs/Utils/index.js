@@ -178,7 +178,7 @@ class Utils {
         // Calculate and store the breakdown for each compounding period
         let currentPrincipal = p;
         switch(type) {
-            case "Hundreds Interest": 
+            case "Sekda Interest": 
                 r = r*12; 
                 for (let i = 0; i < n * t; i++) {
                     const interest = currentPrincipal * ((1+(r/n)) - 1);

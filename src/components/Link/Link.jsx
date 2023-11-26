@@ -5,7 +5,7 @@ import { Col, Row, Statistic as AntDStatistic } from 'antd';
 
 import Utils from "../../libs/Utils";
 
-class Statistic extends React.Component {
+class Link extends React.Component {
     constructor(props) {
         super(props)
 
@@ -15,21 +15,12 @@ class Statistic extends React.Component {
         this.t = this.props.t;
     }
 
-    renderStatistic = () => {
-        const { data } = this.props;
+    renderLinks = () => {
+        const { data, callback } = this.props;
         let componentData = [];
         let currency = "";
         let colCount =  0;
-        data && data.find((obj) => {
-            // colCount
-            if(obj && obj.index > -1) {
-                colCount++
-            }
-            // currency
-            if(obj && obj.key === "Currency") {
-                currency =  obj.value;
-            }
-        }) 
+        
         for(let i in data) {
             if(!data[i] || data[i].index < 0) {
                 continue;
@@ -38,21 +29,21 @@ class Statistic extends React.Component {
             let key = obj.key;
             let title = this.t(obj.title) || "";
             let value = obj.value || "";
-            let type = obj.dataType;
+            let type = "string";
             let splitBy = ""
-            // TODO: TenurePeriod
-            if(key === "TenurePeriod") {
-                type = "words";
-                splitBy = " ";
-            }
+            
             value = Utils.translate(value, this.t, type, splitBy);
-            if(obj.dataType === "number") {
-                value =  Utils.getCurrency(currency) +  value;
-            }
             
             componentData.push(
                 <Col span={24/colCount}>
-                    <AntDStatistic title={title} value={value} />
+                    <div className="link-layout-1" onClick={() => {
+                        if(callback && typeof callback === "function") {
+                            callback(obj);
+                            return;
+                        }
+                    }}> 
+                        <span className="link-title-1">{title}</span>
+                    </div>
                 </Col>
             )
         }
@@ -64,7 +55,7 @@ class Statistic extends React.Component {
         )
     }
 
-    isValidStatistic = () => {
+    isValidLinks = () => {
         const { data } = this.props;
         if(!data || !Array.isArray(data) || !data.length){
             return false;
@@ -73,11 +64,11 @@ class Statistic extends React.Component {
     }
 
     render(){
-        if(!this.isValidStatistic){
+        if(!this.isValidLinks()){
             return <></>;
         }
 
-        return this.renderStatistic();
+        return this.renderLinks();
     }
 }
-export default withTranslation()(Statistic);
+export default withTranslation()(Link);

@@ -21,7 +21,9 @@ class Router extends React.Component {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/dashboard" > <Dashboard /> </Route>
-                    <Route exact path="/computation"> <Computation /> </Route>
+                    <Route exact path="/simple-interest"> <Computation /> </Route>
+                    <Route exact path="/compound-interest"> <Computation /> </Route>
+                    <Route exact path="/sekda-interest"> <Computation /> </Route>
                     <Route path="*" > <Dashboard /> </Route>
                 </Switch>
             </BrowserRouter>
