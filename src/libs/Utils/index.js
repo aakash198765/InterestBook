@@ -40,34 +40,37 @@ class Utils {
     }
 
     static getDuration = (initiationDate, closureDate, type = "") => {
-
         initiationDate = new Date(initiationDate);
         closureDate = new Date(closureDate);
-
+    
         const timeDiff = closureDate - initiationDate;
-
-        // milliseconds in one day, one month, one year
-        let oneDay = 24 * 60 * 60 * 1000;
-        let oneMonth = 30.44 * oneDay; // approximate no. of days in one month
-        let oneYear = 365.25 * oneDay; // approximate no. of days in one year
-
+    
         // Calculate the duration in years, months, and days
-        let years = Math.floor(timeDiff / oneYear);
-        let months = Math.floor((timeDiff % oneYear) / oneMonth);
-        let days = Math.floor((timeDiff % oneMonth) / oneDay);
-
+        let years = closureDate.getFullYear() - initiationDate.getFullYear();
+        let months = closureDate.getMonth() - initiationDate.getMonth();
+        let days = closureDate.getDate() - initiationDate.getDate();
+    
+        // Adjust for negative values in months or days
+        if (days < 0) {
+            months--;
+            days += new Date(closureDate.getFullYear(), closureDate.getMonth(), 0).getDate();
+        }
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+    
         let result = null;
-
+    
         switch(type) {
             case "years": 
                 result = timeDiff / (365.25 * 24 * 60 * 60 * 1000);
                 break;
             case "period":
-                result = years+" Year "+months+" Month "+days+" Day"
+                result = years + " Year " + months + " Month " + days + " Day";
                 break;
             default: 
-                result = {}
-                result = { years: years, months: months, days: days }
+                result = { years: years, months: months, days: days };
                 break;
         }
         return result;
@@ -134,7 +137,7 @@ class Utils {
         
         if(days) {
           let monthlyInterest = (total/100)*ratePerHundred;
-          let perDayInterest = monthlyInterest/30;
+          let perDayInterest = monthlyInterest/30.44;
           let daysInterest = perDayInterest * days
           // totals
           interest = interest + daysInterest;
