@@ -134,7 +134,7 @@ class Utils {
         
         if(days) {
           let monthlyInterest = (total/100)*ratePerHundred;
-          let perDayInterest = monthlyInterest/30.44;
+          let perDayInterest = monthlyInterest/30;
           let daysInterest = perDayInterest * days
           // totals
           interest = interest + daysInterest;
