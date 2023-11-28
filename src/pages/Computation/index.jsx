@@ -69,11 +69,11 @@ class Computation extends Component {
     const sampleData = {
       "Currency": "INR (₹)",
       "InterestType": interestType,
-      "PrincipalAmount": 8000,
+      "PrincipalAmount": 10000,
       "InterestRate": 3,
       "InterestFrequency": "Yearly",
       "InitiationDate": "2023-01-20",
-      "ClosureDate": "2024-01-20",
+      "ClosureDate": "2024-01-19",
     }
     this.setState({formData: sampleData}, () => {
       this.onSubmit();

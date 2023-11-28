@@ -53,7 +53,7 @@ class Utils {
         // Adjust for negative values in months or days
         if (days < 0) {
             months--;
-            days += new Date(closureDate.getFullYear(), closureDate.getMonth(), 0).getDate();
+            days = 30 + days;
         }
         if (months < 0) {
             years--;
@@ -116,10 +116,10 @@ class Utils {
         let interest = 0;
         
         // calculate for years
-        let monthlyInterest = 0;
+        let monthlyInterestForDays = 0;
         if(years) {
           for(let year = 1; year<=years;year++) {
-            monthlyInterest = (total/100)*ratePerHundred;
+            let monthlyInterest = (total/100)*ratePerHundred;
             // totals
             interest = (interest + monthlyInterest * 12);
             total = total + (monthlyInterest * 12);
@@ -128,14 +128,21 @@ class Utils {
         
         // calculate for months
         if(months) {
-          monthlyInterest = (total/100)*ratePerHundred;
+          let monthlyInterest = (total/100)*ratePerHundred;
           // totals
           interest = interest + (monthlyInterest * months);
           total = total + (monthlyInterest * months);
+
+          // update monthly interest for days to have in same year
+          monthlyInterestForDays = monthlyInterest;
         }
         
         if(days) {
-          let perDayInterest = monthlyInterest/30;
+          // check monthlyInterestForDays has been update to calculate for days, if not then find
+          if(!monthlyInterestForDays) {
+            monthlyInterestForDays = (total/100)*ratePerHundred;
+          }
+          let perDayInterest = monthlyInterestForDays/30;
           // totals
           interest = interest + (perDayInterest* days);
           total = total + (perDayInterest* days);
