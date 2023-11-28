@@ -116,32 +116,29 @@ class Utils {
         let interest = 0;
         
         // calculate for years
+        let monthlyInterest = 0;
         if(years) {
           for(let year = 1; year<=years;year++) {
-              let monthlyInterest = (total/100)*ratePerHundred;
-              let annualInterest = monthlyInterest * 12;
-              // totals
-              interest = interest + annualInterest;
-              total = total + annualInterest;
+            monthlyInterest = (total/100)*ratePerHundred;
+            // totals
+            interest = (interest + monthlyInterest * 12);
+            total = total + (monthlyInterest * 12);
           }   
         }
         
         // calculate for months
         if(months) {
-          let monthlyInterest = (total/100)*ratePerHundred;
-          let monthsInterest = monthlyInterest * months;
+          monthlyInterest = (total/100)*ratePerHundred;
           // totals
-          interest = interest + monthsInterest;
-          total = total + monthsInterest;
+          interest = interest + (monthlyInterest * months);
+          total = total + (monthlyInterest * months);
         }
         
         if(days) {
-          let monthlyInterest = (total/100)*ratePerHundred;
-          let perDayInterest = monthlyInterest/30.44;
-          let daysInterest = perDayInterest * days
+          let perDayInterest = monthlyInterest/30;
           // totals
-          interest = interest + daysInterest;
-          total = total + daysInterest;
+          interest = interest + (perDayInterest* days);
+          total = total + (perDayInterest* days);
         }
         
         interest = this.getPrecisedValue(interest);
