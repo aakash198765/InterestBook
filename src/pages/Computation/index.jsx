@@ -144,7 +144,7 @@ class Computation extends Component {
     }
    
     let formData = JSON.parse(JSON.stringify(this.state.formData));
-    const tenurePeriod =  Utils.getDuration(formData.InitiationDate, formData.ClosureDate, "period");
+    const tenurePeriod =  Utils.getDuration(formData.InitiationDate, formData.ClosureDate, "period", Utils.shouldAssumeMonthOf30Days(this.getInterestType()));
     const { interest, total } =  Utils.getComputation(formData.PrincipalAmount, formData.InterestRate, formData.InitiationDate, formData.ClosureDate, formData.InterestFrequency, formData.InterestType);
     const interestBreakdown = Utils.getComputationWithBreakdown(formData.PrincipalAmount, formData.InterestRate, formData.InitiationDate, formData.ClosureDate, formData.InterestFrequency, formData.InterestType);
     formData["TenurePeriod"] = tenurePeriod;

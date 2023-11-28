@@ -39,7 +39,17 @@ class Utils {
         return date;
     }
 
-    static getDuration = (initiationDate, closureDate, type = "") => {
+    static shouldAssumeMonthOf30Days = (interestType) => {
+        if(!interestType || typeof interestType !== "string") {
+            return false;
+        }
+        if(interestType.includes("Sekda")) {
+            return true;
+        }
+        return false;
+    }
+
+    static getDuration = (initiationDate, closureDate, type = "", shouldAssumeMonthOf30Days) => {
         initiationDate = new Date(initiationDate);
         closureDate = new Date(closureDate);
     
@@ -53,7 +63,11 @@ class Utils {
         // Adjust for negative values in months or days
         if (days < 0) {
             months--;
-            days = 30 + days;
+            if(shouldAssumeMonthOf30Days){
+                days = 30 + days;
+            } else {
+                days += new Date(closureDate.getFullYear(), closureDate.getMonth(), 0).getDate();
+            }
         }
         if (months < 0) {
             years--;
@@ -110,7 +124,7 @@ class Utils {
 
     static getSekdaInterest(principal, ratePerHundred, initiationDate, closureDate) {
         // Parse the initial and closure dates
-        const { years, months, days }  = this.getDuration(initiationDate, closureDate)
+        const { years, months, days }  = this.getDuration(initiationDate, closureDate, "", true)
         
         let total = principal;
         let interest = 0;
