@@ -29,6 +29,22 @@ class Utils {
         return value;
     }
 
+    static formatDate = (dateString) => {
+        return dateString;
+        const date = new Date(dateString);
+
+        if (isNaN(date.getTime())) {
+            // If the date is invalid, return "0000-00-00"
+            return "0000-00-00";
+        }
+    
+        const year = date.getFullYear().toString().padStart(4, "0");
+        const month = (date.getMonth() + 1).toString().padStart(2, "0");
+        const day = date.getDate().toString().padStart(2, "0");
+    
+        return `${year}-${month}-${day}`;
+    }
+
     static getTimestamp = (date) => {
         if(!date) {
             return;

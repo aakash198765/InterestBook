@@ -100,14 +100,15 @@ class Computation extends Component {
     stateFormData["InterestFrequency"] = Utils.translate(formData["InterestFrequency"], this.t);
     stateFormData["PrincipalAmount"] = Number((Utils.translate(formData["PrincipalAmount"], this.t, "number", "", true)).replace(/[^0-9]/g, '')) || 0;
     stateFormData["InterestRate"] = Number((Utils.translate(formData["InterestRate"], this.t, "number", "", true)).replace(/[^0-9]/g, '')) || 0;
-    let initiationDate = Utils.translate(formData["InitiationDate"], this.t, "date", "-", true);
-    //if(Utils.validateDate(initiationDate)) {
-      stateFormData["InitiationDate"] = initiationDate
-    //}
-    let closureDate = Utils.translate(formData["ClosureDate"], this.t, "date", "-", true);
-    //if(Utils.validateDate(closureDate)) {
-      stateFormData["ClosureDate"] = closureDate;
-    //}
+    // InitiationDate
+    let initiationDate = formData["InitiationDate"];
+    initiationDate = Utils.formatDate(initiationDate);
+    initiationDate = Utils.translate(initiationDate, this.t, "date", "-", true);
+    stateFormData["InitiationDate"] = initiationDate;
+    // ClosureDate
+    let closureDate = formData["ClosureDate"];
+    closureDate = Utils.translate(closureDate, this.t, "date", "-", true);
+    stateFormData["ClosureDate"] = closureDate;
     this.setState({formData: stateFormData})
   }
 
@@ -199,7 +200,7 @@ class Computation extends Component {
                 {/* Page Content Top  */}
                 <Row className="computation-row-1" gutter={[16,18]}>
                     {/* Left Content */}
-                    <Col xs={24} sm={24} md={7} lg={7} className="computation-content-left" >
+                    <Col xs={24} sm={24} md={24} lg={8} xl={8} xxl={8} className="computation-content-left" >
                         <Form
                             schema={jsonSchema(this.t, this.getInterestType(true))}
                             uiSchema={uiSchema(this.t, this.getInterestType(true))}
@@ -212,29 +213,29 @@ class Computation extends Component {
                     </Col>
                     
                      {/* Right Content */}
-                    <Col xs={24} sm={24} md={17} lg={17} className="computation-content-right">
+                    <Col xs={24} sm={24} md={24} lg={17} xl={17} xxl={17} className="computation-content-right">
                         <div className="chart-container">
                             <Statistic
                                 data={Parser.formatStatisticData(statistics(this.t), formData)}
                             />
-                            <SimpleBarChart 
+                            {/* <SimpleBarChart 
                                 data={data} 
                                 xAxisDataKey="Month-Year" 
                                 yAxisDataKey="TotalAmount"
                                 BarDataKey1="PrincipalAmount" 
                                 BarDataKey2="Interest" 
                                 BarDataKey3="TotalAmount"
-                            />
+                            /> */}
                         </div>
                     </Col>
                 </Row>
                  {/* Page Content Bottom  */}
                 <Row className="computation-row-2">
-                    <Table
+                    {/* <Table
                         title={this.t("Interest Breakdown")}
                         columns={columns(this.t)} 
                         data={data}
-                    />
+                    /> */}
                 </Row>
 
             </div>

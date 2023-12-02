@@ -70,9 +70,9 @@ class NavBar extends Component {
                 </div>
             </div>
             <div className="navbar-right">
-                <div className="login-register">
+                {/* <div className="login-register">
                     <span className="login-header-text" onClick={()=>{}}>{this.t("Login/Register")}</span>
-                </div>
+                </div> */}
                 <div className="language-selector">
                     <Dropdown data={resources("languages")} selected={Utils.getFromLocalStorage("lng")} callback={this.changeLanguage} />
                 </div>

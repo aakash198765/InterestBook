@@ -1,6 +1,7 @@
 #root {
     width: 100% !important;
     border-width: 0rem !important;
+    // background-color: red;
 }
 
 #root__title {
@@ -11,7 +12,8 @@
 
 .page-title {
     font-size: 2rem;
-    line-height: 1.5rem;
+    // line-height: 1.5rem;
+    line-height: 2.5rem;
     margin: 2rem 0rem 1rem 0rem;
     font-weight: 500;
     color: #44475b;
@@ -26,14 +28,14 @@
 }
 
 .page-content {
-    margin: 5rem 0rem 0rem 1rem;
+    margin: 5rem 0rem 0rem 0rem;
 }
 
 .rjsf {
     //padding: 0rem 1rem;
 
     .btn {
-        width: 103%;
+        width: 100%;
         height: 40px !important;
         border: .1rem solid #fff;
         border-radius: .5rem;
@@ -57,12 +59,13 @@
     flex: 1;
     flex-direction: column;
     align-items: flex-start;
-    margin: 0.5rem 0rem 0.5rem 0rem;
+    margin: 0.7rem 0.5rem 0.5rem 0rem;
 }
 
 .form-control {
     width: 100%;
-   // margin: 0.2rem 0rem 0.2rem 0rem;
+    margin: 0.2rem 0.2rem 0.2rem 0rem;
+    padding: 0rem 0rem 0rem 0.5rem;
 }
 
 .control-label {
@@ -72,11 +75,12 @@
 }
 
 select {
-    height: 32px !important;
+    height: 2.3rem !important;
+    width: 103.5% !important;
 }
 
 input {
-    height: 26px !important;
+    height: 2rem !important;
 }
 
 .required {
