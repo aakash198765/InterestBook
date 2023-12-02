@@ -213,7 +213,7 @@ class Computation extends Component {
                     </Col>
                     
                      {/* Right Content */}
-                    <Col xs={24} sm={24} md={24} lg={17} xl={17} xxl={17} className="computation-content-right">
+                    <Col xs={24} sm={24} md={24} lg={16} xl={16} xxl={16} className="computation-content-right">
                         <div className="chart-container">
                             <Statistic
                                 data={Parser.formatStatisticData(statistics(this.t), formData)}

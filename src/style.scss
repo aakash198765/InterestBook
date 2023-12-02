@@ -64,19 +64,14 @@
 
 .form-control {
     width: 100%;
-    margin: 0.2rem 0.2rem 0.2rem 0rem;
-    padding: 0rem 0rem 0rem 0.5rem;
+    // margin: 0.2rem 0.2rem 0.2rem 0rem;
+    // padding: 0rem 0rem 0rem 0.5rem;
 }
 
 .control-label {
     font-size: 1rem !important;
     font-weight: 400 !important;
     line-height: 1.5rem !important;
-}
-
-select {
-    height: 2.3rem !important;
-    width: 103.5% !important;
 }
 
 input {
@@ -86,3 +81,65 @@ input {
 .required {
     color: red;
 }
+
+
+/* Mobile Devices (up to 767px) */
+@media only screen and (max-width: 767px) {
+    /* Styles for mobile devices */
+    select {
+        height: 2.3rem !important;
+        width: 102.4% !important;
+    }
+    
+  }
+  
+  /* Tablets (768px to 991px) */
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* Styles for tablets */
+    select {
+        height: 2.3rem !important;
+        width: 102.4% !important;
+    }
+    
+  }
+  
+  /* Small Screens (768px and below) */
+  @media only screen and (max-width: 768px) {
+    /* Styles for small screens */
+    select {
+        height: 2.3rem !important;
+        width: 102.4% !important;
+    }
+    
+  }
+  
+  /* Small to Medium Screens (768px to 1023px) */
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Styles for small to medium screens */
+    select {
+        height: 2.3rem !important;
+        width: 102.4% !important;
+    }
+    
+  }
+  
+  /* Medium Screens (992px to 1199px) */
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    /* Styles for medium screens */
+    select {
+        height: 2.3rem !important;
+        width: 102.4% !important;
+    }
+    
+  }
+  
+  /* Large Screens (1200px and above) */
+  @media only screen and (min-width: 1200px) {
+    /* Styles for large screens */
+    select {
+        height: 2.3rem !important;
+        width: 101.6% !important;
+    }
+    
+  }
+  
