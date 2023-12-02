@@ -8,8 +8,6 @@
 }
 
 .dashboard-title {
-  font-size: 4.5rem;
-  line-height: 5.5rem;
   margin: 2rem 0rem 1rem 0rem ; 
   font-weight: 500;
   color: #44475b;
@@ -29,3 +27,80 @@
 .w-7 {
   min-width: 7rem !important;
 }
+
+
+/* Mobile Devices (up to 767px) */
+@media only screen and (max-width: 767px) {
+  /* Styles for mobile devices */
+  .dashboard-title {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
+  .dashboardImage {
+    width: 100%;
+    overflow: scroll;
+  }
+}
+
+/* Tablets (768px to 991px) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /* Styles for tablets */
+  .dashboard-title {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
+  .dashboardImage {
+    width: 100%;
+    overflow: scroll;
+  }
+}
+
+/* Small Screens (768px and below) */
+@media only screen and (max-width: 768px) {
+  /* Styles for small screens */
+  .dashboard-title {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
+  .dashboardImage {
+    width: 100%;
+    overflow: scroll;
+  }
+}
+
+/* Small to Medium Screens (768px to 1023px) */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  /* Styles for small to medium screens */
+  .dashboard-title {
+    font-size: 4.5rem;
+    line-height: 5.5rem;
+  }
+  .dashboardImage {
+
+  }
+}
+
+/* Medium Screens (992px to 1199px) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  /* Styles for medium screens */
+  .dashboard-title {
+    font-size: 4.5rem;
+    line-height: 5.5rem;
+  }
+  .dashboardImage {
+
+  }
+}
+
+/* Large Screens (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  /* Styles for large screens */
+  .dashboard-title {
+    font-size: 4.5rem;
+    line-height: 5.5rem;
+  }
+  .dashboardImage {
+
+  }
+}
+

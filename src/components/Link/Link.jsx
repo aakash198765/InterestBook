@@ -49,7 +49,7 @@ class Link extends React.Component {
         }
 
         return (
-            <Row gutter={[16,18]}>
+            <Row gutter={[8,8]}>
                 {componentData}
             </Row>
         )

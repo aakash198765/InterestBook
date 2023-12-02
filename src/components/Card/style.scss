@@ -1,8 +1,21 @@
+.ant-statistic-row {
+    justify-content: center;
+}
+
+.ant-statistic-col {
+    background: #fcfcfc;
+    padding: 3rem .5rem 3rem .5rem;
+    border-width: 0.01rem;
+    border-style: solid;
+    border-radius: 2rem;
+    border-color: #bfbfbf;
+}
+
 .ant-statistic-title {
     font-weight: 400 !important;
-    font-size: 16px !important; 
+    font-size: 1.2rem !important; 
     line-height: 24px !important;
-    color: #4f5357 !important;
+    color: #737577 !important;
     margin-bottom: 12px !important;
     display: flex !important;
     flex-wrap: wrap !important;
@@ -10,13 +23,90 @@
     justify-content: center !important;
 }
 
-.ant-statistic-content-value-int {
+.ant-statistic-content-value {
     flex: 1;
     display: block;
     font-family: Supreme-Regular;
     font-weight: 700;
-    font-size: 32px;
+    font-size: 1.5rem;
     line-height: 48px;
     color: #101828;
     text-align: center;
 }
+
+/* Mobile Devices (up to 767px) */
+@media only screen and (max-width: 767px) {
+    /* Styles for mobile devices */
+    .ant-statistic-row {
+        justify-content: center;
+        padding: 0rem 0.5rem 0rem 0.5rem;
+    }
+
+    .ant-statistic-col {
+        margin: 0rem 0rem 0rem 0rem;
+    }
+    
+  }
+  
+  /* Tablets (768px to 991px) */
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* Styles for tablets */
+    .ant-statistic-row {
+        justify-content: center;
+        padding: 0rem 0.5rem 0rem 0.5rem;
+    }
+    .ant-statistic-col {
+        margin: 0rem 0rem 0rem 0rem;
+    }
+    
+  }
+  
+  /* Small Screens (768px and below) */
+  @media only screen and (max-width: 768px) {
+    /* Styles for small screens */
+    .ant-statistic-row {
+        justify-content: center;
+        padding: 0rem 0.5rem 0rem 0.5rem;
+    }
+    .ant-statistic-col {
+        margin: 0rem 0rem 0rem 0rem;
+    }
+    
+  }
+  
+  /* Small to Medium Screens (768px to 1023px) */
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Styles for small to medium screens */
+    .ant-statistic-row {
+        justify-content: center;
+    }
+    .ant-statistic-col {
+        margin: 0rem 2rem 0rem 0rem;
+    }
+    
+  }
+  
+  /* Medium Screens (992px to 1199px) */
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    /* Styles for medium screens */
+    .ant-statistic-row {
+        justify-content: center;
+    }
+    .ant-statistic-col {
+        margin: 0rem 2rem 0rem 0rem;
+    }
+    
+  }
+  
+  /* Large Screens (1200px and above) */
+  @media only screen and (min-width: 1200px) {
+    /* Styles for large screens */
+    .ant-statistic-row {
+        justify-content: center;
+    }
+    .ant-statistic-col {
+        margin: 0rem 2rem 0rem 0rem;
+    }
+    
+  }
+  

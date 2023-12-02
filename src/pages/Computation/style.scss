@@ -17,3 +17,53 @@
 .computation-row-2 {
 
 }
+
+
+/* Mobile Devices (up to 767px) */
+@media only screen and (max-width: 767px) {
+    /* Styles for mobile devices */
+    .chart-container {
+        margin: 2rem 0rem 2rem 0rem;
+    }
+  }
+  
+  /* Tablets (768px to 991px) */
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* Styles for tablets */
+    .chart-container {
+        margin: 2rem 0rem 2rem 0rem;
+    }
+  }
+  
+  /* Small Screens (768px and below) */
+  @media only screen and (max-width: 768px) {
+    /* Styles for small screens */
+    .chart-container {
+        margin: 2rem 0rem 2rem 0rem;
+    }
+  }
+  
+  /* Small to Medium Screens (768px to 1023px) */
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Styles for small to medium screens */
+    .chart-container {
+        margin: 6rem 0rem 6rem 0rem;
+    }
+  }
+  
+  /* Medium Screens (992px to 1199px) */
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    /* Styles for medium screens */
+    .chart-container {
+        margin: 6rem 0rem 6rem 0rem;
+    }
+  }
+  
+  /* Large Screens (1200px and above) */
+  @media only screen and (min-width: 1200px) {
+    /* Styles for large screens */
+    .chart-container {
+        margin: 6rem 0rem 6rem 0rem;
+    }
+  }
+  

@@ -14,14 +14,15 @@
 }
 
 .app-name {
-    font-size: 24px; /* Adjust the font size */
+    // font-size: 24px; /* Adjust the font size */
+    font-size: 24px;
     font-weight: bold;
     transition: font-size 0.8s;
 
     &:hover {
+      font-size: 28px;
         color: #191616;
-        font-size: 28px;
-        //border-bottom: 1px solid #191616;
+        //font-size: 28px;
         text-decoration: dashed;
     }
 }
@@ -29,8 +30,6 @@
 
   
 .app-logo img {
-    width: 50px; /* Adjust the width of the logo */
-    height: 50px; /* Adjust the height of the logo */
     margin-right: 1rem; /* Spacing between logo and app name */
     padding-top: 1rem;
   }
@@ -58,7 +57,6 @@
 
 .language-selector {
     color: #fff;
-    padding: 7px 22px;
     margin-left: 5px;
     border: none;
     cursor: pointer;
@@ -67,3 +65,109 @@
     max-width: max-content;
     border: 1px solid #d9d9d9;
   }
+
+
+  /* Mobile Devices (up to 767px) */
+@media only screen and (max-width: 767px) {
+  /* Styles for mobile devices */
+  .app-name {
+    // font-size: 24px; /* Adjust the font size */
+    font-size: 20px;
+  }
+  .app-logo img {
+    width: 40px; /* Adjust the width of the logo */
+    height: 40px; /* Adjust the height of the logo */
+    margin-right: .2rem; /* Spacing between logo and app name */
+  }
+  .language-selector {
+    padding: 0px 0px;
+  }
+
+}
+
+/* Tablets (768px to 991px) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /* Styles for tablets */
+  .app-name {
+    // font-size: 24px; /* Adjust the font size */
+    font-size: 20px;
+  }
+  .app-logo img {
+    width: 40px; /* Adjust the width of the logo */
+    height: 40px; /* Adjust the height of the logo */
+    margin-right: .2rem; /* Spacing between logo and app name */
+  }
+  .language-selector {
+    padding: 0px 0px;
+  }
+}
+
+/* Small Screens (768px and below) */
+@media only screen and (max-width: 768px) {
+  /* Styles for small screens */
+  .app-name {
+    // font-size: 24px; /* Adjust the font size */
+    font-size: 20px;
+  }
+  .app-logo img {
+    width: 40px; /* Adjust the width of the logo */
+    height: 40px; /* Adjust the height of the logo */
+    margin-right: .2rem; /* Spacing between logo and app name */
+  }
+  .language-selector {
+    padding: 0px 0px;
+  }
+}
+
+/* Small to Medium Screens (768px to 1023px) */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  /* Styles for small to medium screens */
+  .app-name {
+    // font-size: 24px; /* Adjust the font size */
+    font-size: 24px;
+  }
+  .app-logo img {
+    width: 50px; /* Adjust the width of the logo */
+    height: 50px; /* Adjust the height of the logo */
+    margin-right: 1rem; /* Spacing between logo and app name */
+  }
+  .language-selector {
+    padding: 7px 22px;
+  }
+}
+
+/* Medium Screens (992px to 1199px) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  /* Styles for medium screens */
+  .app-name {
+    // font-size: 24px; /* Adjust the font size */
+    font-size: 24px;
+  }
+  .app-logo img {
+    width: 50px; /* Adjust the width of the logo */
+    height: 50px; /* Adjust the height of the logo */
+    margin-right: 1rem; /* Spacing between logo and app name */
+  }
+  .language-selector {
+    padding: 7px 22px;
+  }
+}
+
+/* Large Screens (1200px and above) */
+@media only screen and (min-width: 1200px) {
+  /* Styles for large screens */
+  .app-name {
+    // font-size: 24px; /* Adjust the font size */
+    font-size: 24px;
+  }
+  .app-logo img {
+    width: 50px; /* Adjust the width of the logo */
+    height: 50px; /* Adjust the height of the logo */
+    margin-right: 1rem; /* Spacing between logo and app name */
+  }
+  .language-selector {
+    padding: 7px 22px;
+  }
+}
+
+  

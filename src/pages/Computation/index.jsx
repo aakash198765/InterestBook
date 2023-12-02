@@ -191,7 +191,9 @@ class Computation extends Component {
               {/* Page Subtitle */}
             <span className="page-subtitle">
                 {this.t(`Our ${this.getInterestType(true)} Calculator puts you in charge.`)}
+                {' '}
                 {this.t("See how your money grows over time with this easy-to-use tool.")} 
+                <br />
                 <br />
                 {this.t("Enter your data below and get started today.")}
             </span>

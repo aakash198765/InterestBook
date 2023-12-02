@@ -5,13 +5,11 @@
 }
 
 #root__title {
-    font-size: 1.4rem;
     font-weight: 400;
     margin: 0rem 0rem 1.5rem 0rem;
  }
 
 .page-title {
-    font-size: 2rem;
     // line-height: 1.5rem;
     line-height: 2.5rem;
     margin: 2rem 0rem 1rem 0rem;
@@ -20,15 +18,13 @@
 }
 
 .page-subtitle {
-    font-size: 1.5rem;
     font-weight: 500;
     color: gray;
     margin-bottom: 1rem;
-    line-height: 2rem;
 }
 
 .page-content {
-    margin: 5rem 0rem 0rem 0rem;
+    margin: 0rem 0rem 0rem 0rem;
 }
 
 .rjsf {
@@ -90,6 +86,20 @@ input {
         height: 2.3rem !important;
         width: 102.4% !important;
     }
+    .page-title {
+        font-size: 1.5rem;
+    }
+    #root__title {
+        font-size: 1.5rem;
+        font-weight: 800;
+    }
+    .page-subtitle {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    .page-content {
+        margin: 1rem 0rem 0rem 0rem;
+    }
     
   }
   
@@ -99,6 +109,20 @@ input {
     select {
         height: 2.3rem !important;
         width: 102.4% !important;
+    }
+    .page-title {
+        font-size: 1.5rem;
+    }
+    #root__title {
+        font-size: 1.5rem;
+        font-weight: 800;
+    }
+    .page-subtitle {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    .page-content {
+        margin: 1rem 0rem 0rem 0rem;
     }
     
   }
@@ -110,6 +134,20 @@ input {
         height: 2.3rem !important;
         width: 102.4% !important;
     }
+    .page-title {
+        font-size: 1.5rem;
+    }
+    #root__title {
+        font-size: 1.5rem;
+        font-weight: 800;
+    }
+    .page-subtitle {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    .page-content {
+        margin: 1rem 0rem 0rem 0rem;
+    }
     
   }
   
@@ -119,6 +157,20 @@ input {
     select {
         height: 2.3rem !important;
         width: 102.4% !important;
+    }
+    .page-title {
+        font-size: 2rem;
+    }
+    #root__title {
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
+    .page-subtitle {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+    .page-content {
+        margin: 5rem 0rem 0rem 0rem;
     }
     
   }
@@ -130,6 +182,20 @@ input {
         height: 2.3rem !important;
         width: 102.4% !important;
     }
+    .page-title {
+        font-size: 2rem;
+    }
+    #root__title {
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
+    .page-subtitle {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+    .page-content {
+        margin: 5rem 0rem 0rem 0rem;
+    }
     
   }
   
@@ -139,6 +205,20 @@ input {
     select {
         height: 2.3rem !important;
         width: 101.6% !important;
+    }
+    .page-title {
+        font-size: 2rem;
+    }
+    #root__title {
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
+    .page-subtitle {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+    .page-content {
+        margin: 5rem 0rem 0rem 0rem;
     }
     
   }
